@@ -36,7 +36,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Update version
-      uses: brettdorrans/write-version-to-file@master
+      uses: eball/write-tag-to-version-file@latest
       with:
         filename: '/.VERSION'
         placeholder: '${VERSION}'

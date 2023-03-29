@@ -30,8 +30,12 @@ fi
 
 log "File Content:" "\n$content"
 
-git fetch --tags --force
-latestVersionTag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+if [ -z "$3" ]; then
+    git fetch --tags --force
+    latestVersionTag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+else
+    latestVersionTag=$3
+fi
 
 log "Replacing placeholder with:" "$latestVersionTag"
 

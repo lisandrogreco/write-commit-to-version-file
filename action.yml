@@ -1,4 +1,4 @@
-name: 'Write Version to File'
+name: 'Write Tag to Version File'
 author: 'Brett Dorrans'
 description: 'A GitHub Action that fetches the latest release tag within a repo and writes this to a file'
 inputs:
@@ -9,12 +9,16 @@ inputs:
     description: 'The placeholder to replace with latest git tag'
     required: false
     default: '${VERSION}'
+  tag:
+    description: 'The release tag to replace the placeholder'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.filename }}
     - ${{ inputs.placeholder }}
+    - ${{ inputs.tag }}
 branding:
   icon: 'hash'
   color: 'orange'

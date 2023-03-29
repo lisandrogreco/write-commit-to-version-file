@@ -1,4 +1,6 @@
-# Write Version to File
+# Write Tage to Version File
+
+Based on `Write Version to File`
 
 A GitHub Action that fetches the latest git tag within a repo and writes this to a file.
 
@@ -10,7 +12,11 @@ A GitHub Action that fetches the latest git tag within a repo and writes this to
 
 ### `placeholder`
 
-**Optional** - The filename to write the version tag to. Defaults to `${VERSION}`
+**Optional** - The placeholder in the filename to write the version tag to. Defaults to `${VERSION}`
+
+### `tag`
+
+**Optional** - The version tag to write. If not set, the latest git tag will be write.
 
 ## Example usage
 
@@ -26,7 +32,7 @@ on:
 jobs:
   write-version:
     runs-on: ubuntu-latest
-    name: Write Version to File
+    name: Write Tag to Version File
     steps:
     - uses: actions/checkout@master
     - name: Update version
@@ -34,4 +40,5 @@ jobs:
       with:
         filename: '/.VERSION'
         placeholder: '${VERSION}'
+        tag: 'v1.0.0'
 ```

@@ -2,25 +2,23 @@
 
 Based on `Write Version to File`
 
-A GitHub Action that fetches the latest git tag within a repo and writes this to a file.
+A GitHub Action that fetches the latest git commit within a repo and writes this to a file.
 
 ## Inputs
 
 ### `filename`
 
-**Required** - The filename to write the version tag to.
+**Required** - The filename to write the commit id to.
 
 ### `placeholder`
 
 **Optional** - The placeholder in the filename to write the version tag to. Defaults to `${VERSION}`
 
-### `tag`
 
-**Optional** - The version tag to write. If not set, the latest git tag will be write.
 
 ## Example usage
 
-Commit a file named `.VERSION` containing `${VERSION}` to the root of your repository. This string will be replaced with the latest git tag in the CI pipeline.
+Commit a file named `.VERSION` containing `${VERSION}` to the root of your repository. This string will be replaced with the latest git commit in the CI pipeline.
 
 ```
 name: Write Version to File
@@ -36,9 +34,8 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Update version
-      uses: eball/write-tag-to-version-file@latest
+      uses: lisandrogreco/write-commit-to-version-file@latest
       with:
         filename: '/.VERSION'
         placeholder: '${VERSION}'
-        tag: 'v1.0.0'
 ```
